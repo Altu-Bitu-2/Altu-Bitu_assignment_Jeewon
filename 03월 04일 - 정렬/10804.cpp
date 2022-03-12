@@ -8,14 +8,9 @@ pair<int, int> section[10];
 
 void reverseCard() {
     for (int i = 0; i < 10; i++) {
-        int a = section[i].a-1;
-        int b = section[i].b-1;
-        vector<int> v(b - a + 1, 0);
-        for (int j = 0; j <= b - a; j++)
-            v[j] = card[a + j];
-        for (int j = 0; j <= b - a; j++)
-            card[a + j] = v[b - a - j];
-
+        int a = section[i].a - 1;
+        int b = section[i].b;
+        reverse(card + a, card + b);    //algorithm 헤더의 reverse 함수, [)
     }
 }
 
@@ -30,10 +25,10 @@ int main() {
     for (int i = 0; i < 10; i++) {
         cin >> section[i].a >> section[i].b;
     }
-
     reverseCard();
 
     for (int i = 0; i < 20; i++)
         cout << card[i] << ' ';
 
 }
+

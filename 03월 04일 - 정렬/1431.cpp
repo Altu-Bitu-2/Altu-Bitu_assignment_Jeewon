@@ -2,19 +2,22 @@
 
 using namespace std;
 
+int sum_num(const string &s) {
+    int sum = 0;
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] < '0' || s[i] > '9') continue;
+        sum += s[i] - '0';
+    }
+    return sum;
+}
+
 bool cmp(const string &a, const string &b) {
     if (a.length() != b.length()) {
         return a.length() < b.length();
     }
-    int a_sum = 0, b_sum = 0;
-    for (int i = 0; i < a.length(); i++) {
-        if (a[i] < '0' || a[i] > '9') continue;
-        a_sum += a[i] - '0';
-    }
-    for (int i = 0; i < b.length(); i++) {
-        if (b[i] < '0' || b[i] > '9') continue;
-        b_sum += b[i] - '0';
-    }
+
+    int a_sum = sum_num(a);
+    int b_sum = sum_num(b);
     if (a_sum != b_sum) {
         return a_sum < b_sum;
     }
@@ -33,4 +36,5 @@ int main() {
     for (int i = 0; i < n; i++)
         cout << v[i] << '\n';
 }
+
 
