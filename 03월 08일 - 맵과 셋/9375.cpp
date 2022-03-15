@@ -22,11 +22,11 @@ int combination(vector<pair<string,int>> &v) {
             ans += temp;
         } while (next_permutation(v2.begin(), v2.end()));
     }
-     */ //ì¡°í•©ìœ¼ë¡œ ë„ˆë¬´ ì–´ë µê²Œ ì ‘ê·¼í•¨->ì‹œê°„ì´ˆê³¼
+     */ //Á¶ÇÕÀ¸·Î ³Ê¹« ¾î·Æ°Ô Á¢±ÙÇÔ->½Ã°£ÃÊ°ú
     for(int i=0;i<len;i++){
-        ans*=v[i].second+1; //í•´ë‹¹ ì˜·ì¢…ë¥˜ ì•„ì˜ˆ ì•ˆ ì…ëŠ” ê²½ìš°
+        ans*=v[i].second+1; //ÇØ´ç ¿ÊÁ¾·ù ¾Æ¿¹ ¾È ÀÔ´Â °æ¿ì
     }
-    return ans-1;   //ë‹¤ ë²—ì€ ê²½ìš° ë¹¼ê¸°
+    return ans-1;   //´Ù ¹şÀº °æ¿ì »©±â
 }
 
 int main() {
@@ -43,15 +43,12 @@ int main() {
         cin >> n;
         for (int i = 0; i < n; i++) {
             cin >> s >> kind;
-            if (m.count(kind)) {
-                m[kind]++;
-            } else {
-                m[kind] = 1;
-            }
+            m[kind]++;
         }
         vector<pair<string,int>> v(m.begin(), m.end());
         cout << combination(v) << '\n';
     }
     return 0;
 }
+
 

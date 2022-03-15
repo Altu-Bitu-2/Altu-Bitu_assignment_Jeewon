@@ -26,11 +26,7 @@ int main() {
     while (n--) {
         cin >> s;
         if (s.length() < m) continue;
-        if (map.count(s)) {
-            map[s]++;
-        } else {
-            map[s] = 1;
-        }
+        map[s]++;
     }
     vector<pair<string, int>> v(map.begin(), map.end());
     sort(v.begin(), v.end(), cmp);
@@ -39,4 +35,5 @@ int main() {
     }
 
 }
+
 

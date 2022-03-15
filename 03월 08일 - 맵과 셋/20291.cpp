@@ -1,6 +1,4 @@
 #include <iostream>
-#include <sstream>
-#include <vector>
 #include <map>
 
 #define name first
@@ -8,21 +6,15 @@
 using namespace std;
 
 string split(string str, char delimiter) {
-    istringstream ss(str);
-    string buffer;
-    vector<string> result;
-    while (getline(ss, buffer, delimiter)) {
-        result.push_back(buffer);
-    }
-    return result[1];
+    //string의 내장함수인 find와 substr이용.
+    //find는 해당 문자(열)이 위치한 주솟값 반환./substr(pos, len)
+    string ext;
+    ext = str.substr(str.find(delimiter)+1);
+    return ext;
 }
 
 void find_ext(string ext, map<string, int> &m) {
-    if(m.count(ext)){
-        m[ext]++;
-        return;
-    }
-    m[ext]=1;
+    m[ext]++;
     return;
 }
 
@@ -40,3 +32,4 @@ int main() {
         cout << iter->name << ' ' << iter->num << '\n';
     }
 }
+

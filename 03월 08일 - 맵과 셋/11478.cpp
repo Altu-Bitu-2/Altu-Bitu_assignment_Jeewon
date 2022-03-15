@@ -3,30 +3,27 @@
 
 using namespace std;
 
-//string classì˜ substr()ìœ¼ë¡œ ë¶€ë¶„ ë¬¸ìì—´ ì¶”ì¶œ ê°€ëŠ¥í•˜ë‹¤.
-void make_sub(int len, string str, int &ans) {
-    string sub;
-    set<string> s;
-    for (int i = 0; i < str.length() - len + 1; i++) {
-        sub = str.substr(i, len);
-        if (s.count(sub)) {
-            continue;
+//string classÀÇ substr()À¸·Î ºÎºĞ ¹®ÀÚ¿­ ÃßÃâ °¡´ÉÇÏ´Ù.
+int make_sub(string str, set<string> &s) {
+    int len = str.length();
+    for (int k = 1; k <= len; k++) {
+        string sub;
+        for (int i = 0; i < len - k + 1; i++) {
+            sub = str.substr(i, k);
+            s.insert(sub);
         }
-        ans++;
-        s.insert(sub);
     }
-    return;
+
+    return s.size();
 }
 
 int main() {
-    int ans = 0;
     string str;
+    set<string> s;
     cin >> str;
-    for (int i = 1; i <= str.length(); i++) {
-        make_sub(i, str, ans);
-    }
-    cout << ans;
+    cout << make_sub(str, s);
+
     return 0;
 }
 
-//mainì— setì„ ë§Œë“¤ì—ˆì„ ë•ŒëŠ” ì‹œê°„ì´ˆê³¼ ë‚¨.->ë”°ë¼ì„œ ë¶€ë¶„ ë¬¸ìì—´ ê¸¸ì´ë§ˆë‹¤ setì„ ë§Œë“¦.
+//main¿¡ setÀ» ¸¸µé¾úÀ» ¶§´Â ½Ã°£ÃÊ°ú ³².->µû¶ó¼­ ºÎºĞ ¹®ÀÚ¿­ ±æÀÌ¸¶´Ù setÀ» ¸¸µê.
